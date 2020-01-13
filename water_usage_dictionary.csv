@@ -1,0 +1,116 @@
+field,description,water_use_category,water_use_category_description,ground_surface,fresh_saline,accounting
+state,State postal abbreviation,,,,,
+county,County name,,,,,
+fips,Concatenated State-county FIPS code,,,,,
+year,Year of data=2010,,,,,
+population,Total population of county,,,,,
+pub_sup_1,"Public Supply, population served by groundwater",Public Supply,Services at least 25 people or have a minimum of 15 connections in its water supply network,ground,fresh,
+pub_sup_2,"Public Supply, population served by surface water",Public Supply,Services at least 25 people or have a minimum of 15 connections in its water supply network,,,
+pub_sup_3,"Public Supply, total population served",Public Supply,Services at least 25 people or have a minimum of 15 connections in its water supply network,,fresh and saline,pub_sup_1 + pub_sup_2
+pub_sup_4,"Public Supply,  groundwater withdrawals, fresh, in Mgal/d",Public Supply,Services at least 25 people or have a minimum of 15 connections in its water supply network,ground,fresh,
+pub_sup_5,"Public Supply, groundwater withdrawals, saline, in Mgal/d",Public Supply,Services at least 25 people or have a minimum of 15 connections in its water supply network,ground,saline,
+pub_sup_6,"Public Supply, groundwater withdrawals, total, in Mgal/d",Public Supply,Services at least 25 people or have a minimum of 15 connections in its water supply network,ground,fresh and saline,pub_sup_4 + pub_sup_5
+pub_sup_7,"Public Supply, surface-water withdrawals, fresh, in Mgal/d",Public Supply,Services at least 25 people or have a minimum of 15 connections in its water supply network,surface,fresh,
+pub_sup_8,"Public Supply, surface-water withdrawals, saline, in Mgal/d",Public Supply,Services at least 25 people or have a minimum of 15 connections in its water supply network,surface,saline,
+pub_sup_9,"Public Supply, surface-water withdrawals, total, in Mgal/d",Public Supply,Services at least 25 people or have a minimum of 15 connections in its water supply network,surface,fresh and saline,pub_sup_7 + pub_sup_8
+pub_sup_10,"Public Supply, total withdrawals, fresh, in Mgal/d",Public Supply,Services at least 25 people or have a minimum of 15 connections in its water supply network,ground and surface,,pub_sup_4 + pub_sup_7
+pub_sup_11,"Public Supply, total withdrawals, saline, in Mgal/d",Public Supply,Services at least 25 people or have a minimum of 15 connections in its water supply network,ground and surface,,pub_sup_5 + pub_sup_8
+pub_sup_12,"Public Supply, total withdrawals, total (fresh+saline), in Mgal/d",Public Supply,Services at least 25 people or have a minimum of 15 connections in its water supply network,ground and surface,,pub_sup_10 + pub_sup_11
+dom_sup_1,"Domestic, self-supplied population",Domestic,Used for household purposes - including potable and non-potable water provided to households,,,
+dom_sup_2,"Domestic, self-supplied groundwater withdrawals, fresh, in Mgal/d",Domestic,Used for household purposes - including potable and non-potable water provided to households,ground,fresh,
+dom_sup_3,"Domestic, self-supplied surface-water withdrawals, fresh, in Mgal/d",Domestic,Used for household purposes - including potable and non-potable water provided to households,surface,fresh,
+dom_sup_4,"Domestic, total self-supplied withdrawals, fresh, in Mgal/d",Domestic,Used for household purposes - including potable and non-potable water provided to households,ground and surface,fresh,dom_sup_2 + dom_sup_3
+dom_sup_5,"Domestic self-supplied per capita use, in gallons/day",Domestic,Used for household purposes - including potable and non-potable water provided to households,,,
+dom_sup_6,"Domestic, deliveries from Public Supply, in Mgal/d",Domestic,Used for household purposes - including potable and non-potable water provided to households,,,
+dom_sup_7,"Domestic, publicly supplied per capita use, in gallons/day ",Domestic,Used for household purposes - including potable and non-potable water provided to households,,,
+dom_sup_8,"Domestic, total use (withdrawals + deliveries)",Domestic,Used for household purposes - including potable and non-potable water provided to households,,,dom_sup_4 + dom_sup_6
+ind_1,"Industrial, self-supplied groundwater withdrawals, fresh, in Mgal/d",Industrial,"Assists in fabrication, processing, washing, and cooling in various industries (e.g. food, petroleum, etc.)",ground,fresh,
+ind_2,"Industrial, self-supplied groundwater withdrawals, saline, in Mgal/d",Industrial,"Assists in fabrication, processing, washing, and cooling in various industries (e.g. food, petroleum, etc.)",ground,saline,
+ind_3,"Industrial, self-supplied groundwater withdrawals, total, in Mgal/d",Industrial,"Assists in fabrication, processing, washing, and cooling in various industries (e.g. food, petroleum, etc.)",ground,fresh and saline,ind_1 + ind_2
+ind_4,"Industrial, self-supplied surface-water withdrawals, fresh, in Mgal/d",Industrial,"Assists in fabrication, processing, washing, and cooling in various industries (e.g. food, petroleum, etc.)",surface,fresh,
+ind_5,"Industrial, self-supplied surface-water withdrawals, saline, in Mgal/d",Industrial,"Assists in fabrication, processing, washing, and cooling in various industries (e.g. food, petroleum, etc.)",surface,saline,
+ind_6,"Industrial, self-supplied surface-water withdrawals, total, in Mgal/d",Industrial,"Assists in fabrication, processing, washing, and cooling in various industries (e.g. food, petroleum, etc.)",surface,fresh and saline,ind_4 + ind_5
+ind_7,"Industrial, self-supplied total withdrawals, fresh, in Mgal/d",Industrial,"Assists in fabrication, processing, washing, and cooling in various industries (e.g. food, petroleum, etc.)",ground and surface,fresh,
+ind_8,"Industrial, self-supplied total withdrawals, saline, in Mgal/d",Industrial,"Assists in fabrication, processing, washing, and cooling in various industries (e.g. food, petroleum, etc.)",ground and surface,saline,
+ind_9,"Industrial, self-supplied total withdrawals, total (fresh+saline), in Mgal/d",Industrial,"Assists in fabrication, processing, washing, and cooling in various industries (e.g. food, petroleum, etc.)",ground and surface,fresh and saline,ind_7 + ind_8
+irrigation_1,"Irrigation, groundwater withdrawals, fresh, in Mgal/d",Irrigation,"Assists crop and pasture growth, or to maintain vegetation on recreational lands such as golf courses",ground,fresh,crop_1 + golf_1
+irrigation_2,"Irrigation, surface-water withdrawals, fresh, in Mgal/d",Irrigation,"Assists crop and pasture growth, or to maintain vegetation on recreational lands such as golf courses",surface,fresh,crop_2 + golf_2
+irrigation_3,"Irrigation, total withdrawals, fresh, in Mgal/d",Irrigation,"Assists crop and pasture growth, or to maintain vegetation on recreational lands such as golf courses",ground and surface,fresh,irrigation_1 + irrigation_2
+irrigation_4,"Irrigation, acres irrigated, sprinkler, in thousands",Irrigation,"Assists crop and pasture growth, or to maintain vegetation on recreational lands such as golf courses",,,crop_4 + golf_4
+irrigation_5,"Irrigation, acres irrigated, microirrigation, in thousands",Irrigation,"Assists crop and pasture growth, or to maintain vegetation on recreational lands such as golf courses",,,crop_5 + golf_5
+irrigation_6,"Irrigation, acres irrigated, surface (flood), in thousands",Irrigation,"Assists crop and pasture growth, or to maintain vegetation on recreational lands such as golf courses",,,crop_6 + golf_6
+irrigation_7,"Irrigation, acres irrigated, total, in thousands",Irrigation,"Assists crop and pasture growth, or to maintain vegetation on recreational lands such as golf courses",,,crop_7 + golf_7
+crop_1,"Irrigation-Crop, groundwater withdrawals, fresh, in Mgal/d",Irrigation-Crop,Assists in crop and pasture growth,ground,fresh,
+crop_2,"Irrigation-Crop, surface-water withdrawals, fresh, in Mgal/d",Irrigation-Crop,Assists in crop and pasture growth,surface,fresh,
+crop_3,"Irrigation-Crop, total withdrawals, fresh, in Mgal/d",Irrigation-Crop,Assists in crop and pasture growth,ground and surface,fresh,crop_1 + crop_2
+crop_4,"Irrigation-Crop, acres irrigated, sprinkler, in thousands",Irrigation-Crop,Assists in crop and pasture growth,,,
+crop_5,"Irrigation-Crop, acres irrigated, microirrigation, in thousands",Irrigation-Crop,Assists in crop and pasture growth,,,
+crop_6,"Irrigation-Crop, acres irrigated, surface (flood), in thousands",Irrigation-Crop,Assists in crop and pasture growth,,,
+crop_7,"Irrigation-Crop, acres irrigated, total, in thousands",Irrigation-Crop,Assists in crop and pasture growth,,,crop_4 + crop_5 + crop_6
+golf_1,"Irrigation-Golf, groundwater withdrawals, fresh, in Mgal/d",Irrigation-Golf,Assists in maintaining golf courses,ground,fresh,
+golf_2,"Irrigation-Golf, surface-water withdrawals, fresh, in Mgal/d",Irrigation-Golf,Assists in maintaining golf courses,surface,fresh,
+golf_3,"Irrigation-Golf, total withdrawals, fresh, in Mgal/d",Irrigation-Golf,Assists in maintaining golf courses,ground and surface,fresh,golf_1 + golf_2
+golf_4,"Irrigation-Golf, acres irrigated, sprinkler, in thousands",Irrigation-Golf,Assists in maintaining golf courses,,,
+golf_5,"Irrigation-Golf, acres irrigated, microirrigation, in thousands",Irrigation-Golf,Assists in maintaining golf courses,,,
+golf_6,"Irrigation-Golf, acres irrigated, surface (flood), in thousands",Irrigation-Golf,Assists in maintaining golf courses,,,
+golf_7,"Irrigation-Golf, acres irrigated, total, in thousands",Irrigation-Golf,Assists in maintaining golf courses,,,golf_4 + golf_5 + golf_6
+livestock_1,"Livestock, groundwater withdrawals, fresh, in Mgal/d",Livestock,"Used in livestock watering, feedlots, dairy operations, and other on-farm needs separate from aquaculture",ground,fresh,
+livestock_2,"Livestock, surface-water withdrawals, fresh, in Mgal/d",Livestock,"Used in livestock watering, feedlots, dairy operations, and other on-farm needs separate from aquaculture",surface,fresh,
+livestock_3,"Livestock, total withdrawals, fresh, in Mgal/d",Livestock,"Used in livestock watering, feedlots, dairy operations, and other on-farm needs separate from aquaculture",ground and surface,fresh,livestock_1 + livestock_2
+aqua_1,"Aquaculture, groundwater withdrawals, fresh, in Mgal/d",Aquaculture,Used in farming of organisms that live in water and fish hatcheries activities,ground,fresh,
+aqua_2,"Aquaculture, groundwater withdrawals, saline, in Mgal/d",Aquaculture,Used in farming of organisms that live in water and fish hatcheries activities,ground,saline,
+aqua_3,"Aquaculture, groundwater withdrawals, total, in Mgal/d",Aquaculture,Used in farming of organisms that live in water and fish hatcheries activities,ground,fresh and saline,aqua_1 + aqua_2
+aqua_4,"Aquaculture, surface-water withdrawals, fresh, in Mgal/d",Aquaculture,Used in farming of organisms that live in water and fish hatcheries activities,surface,fresh,
+aqua_5,"Aquaculture, surface-water withdrawals, saline, in Mgal/d",Aquaculture,Used in farming of organisms that live in water and fish hatcheries activities,surface,saline,
+aqua_6,"Aquaculture, surface-water withdrawals, total, in Mgal/d",Aquaculture,Used in farming of organisms that live in water and fish hatcheries activities,surface,fresh and saline,aqua_4 + aqua_5
+aqua_7,"Aquaculture, total withdrawals, fresh, in Mgal/d",Aquaculture,Used in farming of organisms that live in water and fish hatcheries activities,ground and surface,fresh,
+aqua_8,"Aquaculture, total withdrawals, saline, in Mgal/d",Aquaculture,Used in farming of organisms that live in water and fish hatcheries activities,ground and surface,saline,
+aqua_9,"Aquaculture, total withdrawals, total (fresh+saline), in Mgal/d",Aquaculture,Used in farming of organisms that live in water and fish hatcheries activities,ground and surface,fresh and saline,aqua_7 + aqua_8
+mining_1,"Mining, groundwater withdrawals, fresh, in Mgal/d",Mining,Used in process of extracting minerals,ground,fresh,
+mining_2,"Mining, groundwater withdrawals, saline, in Mgal/d",Mining,Used in process of extracting minerals,ground,saline,
+mining_3,"Mining, groundwater withdrawals, total, in Mgal/d",Mining,Used in process of extracting minerals,ground,fresh and saline,mining_1 + mining_2
+mining_4,"Mining, surface-water withdrawals, fresh, in Mgal/d",Mining,Used in process of extracting minerals,surface,fresh,
+mining_5,"Mining, surface-water withdrawals, saline, in Mgal/d",Mining,Used in process of extracting minerals,surface,saline,
+mining_6,"Mining, surface-water withdrawals, total, in Mgal/d",Mining,Used in process of extracting minerals,surface,fresh and saline,mining_4 + mining_5
+mining_7,"Mining, total withdrawals, fresh, in Mgal/d",Mining,Used in process of extracting minerals,ground and surface,fresh,
+mining_8,"Mining, total withdrawals, saline, in Mgal/d",Mining,Used in process of extracting minerals,ground and surface,saline,
+mining_9,"Mining, total withdrawals, total (fresh+saline), in Mgal/d",Mining,Used in process of extracting minerals,ground and surface,fresh and saline,mining_7 + mining_8
+thermoelectric_1,"Thermoelectric, groundwater withdrawals, fresh, in Mgal/d",Thermoelectric,Assists in the process of generating electricity with steam-driven turbine generators,ground,fresh,thermoelectric_11 + thermoelectric_21
+thermoelectric_2,"Thermoelectric, groundwater withdrawals, saline, in Mgal/d",Thermoelectric,Assists in the process of generating electricity with steam-driven turbine generators,ground,saline,thermoelectric_12 + thermoelectric_22
+thermoelectric_3,"Thermoelectric, groundwater withdrawals, total, in Mgal/d",Thermoelectric,Assists in the process of generating electricity with steam-driven turbine generators,ground,fresh and saline,thermoelectric_1 + thermoelectric_2
+thermoelectric_4,"Thermoelectric, surface-water withdrawals, fresh, in Mgal/d",Thermoelectric,Assists in the process of generating electricity with steam-driven turbine generators,surface,fresh,thermoelectric_14 + thermoelectric_24
+thermoelectric_5,"Thermoelectric, surface-water withdrawals, saline, in Mgal/d",Thermoelectric,Assists in the process of generating electricity with steam-driven turbine generators,surface,saline,thermoelectric_15 + thermoelectric_25
+thermoelectric_6,"Thermoelectric, surface-water withdrawals, total, in Mgal/d",Thermoelectric,Assists in the process of generating electricity with steam-driven turbine generators,surface,fresh and saline,thermoelectric_4 + thermoelectric_5
+thermoelectric_7,"Thermoelectric, total withdrawals, fresh, in Mgal/d",Thermoelectric,Assists in the process of generating electricity with steam-driven turbine generators,ground and surface,fresh,thermoelectric_17 + thermoelectric_27
+thermoelectric_8,"Thermoelectric, total withdrawals, saline, in Mgal/d",Thermoelectric,Assists in the process of generating electricity with steam-driven turbine generators,ground and surface,saline,thermoelectric_18 + thermoelectric_28
+thermoelectric_9,"Thermoelectric, total withdrawals, total (fresh+saline), in Mgal/d",Thermoelectric,Assists in the process of generating electricity with steam-driven turbine generators,ground and surface,fresh and saline,thermoelectric_7 + thermoelectric_8
+thermoelectric_10,"Thermoelectric, power generated, in gigawatt-hours",Thermoelectric,Assists in the process of generating electricity with steam-driven turbine generators,,,thermoelectric_20 + thermoelectric_30
+thermoelectric_11,"Thermoelectric once-through, groundwater withdrawals, fresh, in Mgal/d",Thermoelectric once-through,Used in cooling system where water is circulated through heat exchangers and then returned to water source,ground,fresh,
+thermoelectric_12,"Thermoelectric once-through, groundwater withdrawals, saline, in Mgal/d",Thermoelectric once-through,Used in cooling system where water is circulated through heat exchangers and then returned to water source,ground,saline,
+thermoelectric_13,"Thermoelectric once-through, groundwater withdrawals, total, in Mgal/d",Thermoelectric once-through,Used in cooling system where water is circulated through heat exchangers and then returned to water source,ground,fresh and saline,thermoelectric_11 + thermoelectric_12
+thermoelectric_14,"Thermoelectric once-through, surface-water withdrawals, fresh, in Mgal/d",Thermoelectric once-through,Used in cooling system where water is circulated through heat exchangers and then returned to water source,surface,,
+thermoelectric_15,"Thermoelectric once-through, surface-water withdrawals, saline, in Mgal/d",Thermoelectric once-through,Used in cooling system where water is circulated through heat exchangers and then returned to water source,surface,fresh,
+thermoelectric_16,"Thermoelectric once-through, surface-water withdrawals, total, in Mgal/d",Thermoelectric once-through,Used in cooling system where water is circulated through heat exchangers and then returned to water source,surface,saline,thermoelectric_14 + thermoelectric_15
+thermoelectric_17,"Thermoelectric once-through, total withdrawals, fresh, in Mgal/d",Thermoelectric once-through,Used in cooling system where water is circulated through heat exchangers and then returned to water source,ground and surface,fresh,
+thermoelectric_18,"Thermoelectric once-through, total withdrawals, saline, in Mgal/d",Thermoelectric once-through,Used in cooling system where water is circulated through heat exchangers and then returned to water source,ground and surface,saline,
+thermoelectric_19,"Thermoelectric once-through, total withdrawals, total, in Mgal/d",Thermoelectric once-through,Used in cooling system where water is circulated through heat exchangers and then returned to water source,ground and surface,fresh and saline,thermoelectric_17 + thermoelectric_18
+thermoelectric_20,"Thermoelectric once-through, power generated, in gigawatt-hours",Thermoelectric once-through,Used in cooling system where water is circulated through heat exchangers and then returned to water source,,,
+thermoelectric_21,"Thermoelectric recirculation, groundwater withdrawals, fresh, in Mgal/d",Thermoeletric recirculation,Used in cooling system where water is recirculated through heat exchangers,ground,fresh,
+thermoelectric_22,"Thermoelectric recirculation, groundwater withdrawals, saline, in Mgal/d",Thermoeletric recirculation,Used in cooling system where water is recirculated through heat exchangers,ground,saline,
+thermoelectric_23,"Thermoelectric recirculation, groundwater withdrawals, total, in Mgal/d",Thermoeletric recirculation,Used in cooling system where water is recirculated through heat exchangers,ground,fresh and saline,thermoelectric_21 + thermoelectric_22
+thermoelectric_24,"Thermoelectric recirculation, surface-water withdrawals, fresh, in Mgal/d",Thermoeletric recirculation,Used in cooling system where water is recirculated through heat exchangers,surface,fresh,
+thermoelectric_25,"Thermoelectric recirculation, surface-water withdrawals, saline, in Mgal/d",Thermoeletric recirculation,Used in cooling system where water is recirculated through heat exchangers,surface,saline,
+thermoelectric_26,"Thermoelectric recirculation, surface-water withdrawals, total, in Mgal/d",Thermoeletric recirculation,Used in cooling system where water is recirculated through heat exchangers,surface,fresh and saline,thermoelectric_24 + thermoelectric_25
+thermoelectric_27,"Thermoelectric recirculation, total withdrawals, fresh, in Mgal/d",Thermoeletric recirculation,Used in cooling system where water is recirculated through heat exchangers,ground and surface,fresh,
+thermoelectric_28,"Thermoelectric recirculation, total withdrawals, saline, in Mgal/d",Thermoeletric recirculation,Used in cooling system where water is recirculated through heat exchangers,ground and surface,saline,
+thermoelectric_29,"Thermoelectric recirculation, total withdrawals, total (fresh+saline), in Mgal/d",Thermoeletric recirculation,Used in cooling system where water is recirculated through heat exchangers,ground and surface,fresh and saline,thermoelectric_27 + thermoelectric_28
+thermoelectric_30,"Thermoelectric recirculation, power generated, in gigawatt-hours",Thermoeletric recirculation,Used in cooling system where water is recirculated through heat exchangers,,,
+gro_wat_1,"Total groundwater withdrawals, fresh, in Mgal/d",Total groundwater,Withdrawls from wells and springs,ground,fresh,pub_sup_4 + dom_sup_2 + ind_1 + irrigation_1 + livestock_1 + aqua_1 + mining_1 + thermoelectric_1
+gro_wat_2,"Total groundwater withdrawals, saline, in Mgal/d",Total groundwater,Withdrawls from wells and springs,ground,saline,pub_sup_5 + ind_2 + aqua_2 + mining_2 + thermoelectric_2
+gro_wat_3,"Total groundwater withdrawals, total (fresh+saline), in Mgal/d",Total groundwater,Withdrawls from wells and springs,ground,fresh and saline,gro_wat_1 + gro_wat_2
+surf_wat_1,"Total surface-water withdrawals, fresh, in Mgal/d",Total surface-water withdrawls,"Withdrawls from streams, rivers, lakes, reservoirs and oceans",surface,fresh,pub_sup_7 + dom_sup_3 + ind_4 + irrigation_2 + livestock_2 + aqua_4 + mining_4 + thermoelectric_4
+surf_wat_2,"Total surface-water withdrawals, saline, in Mgal/d",Total surface-water withdrawls,"Withdrawls from streams, rivers, lakes, reservoirs and oceans",surface,saline,pub_sup_8 + ind_5 + aqua_5 + mining_5 + thermoelectric_5
+surf_wat_3,"Total surface-water withdrawals, total (fresh+saline), in Mgal/d",Total surface-water withdrawls,Withdrawls at an aggregate level,surface,fresh and saline,surf_wat_1 + surf_wat_2
+total_withdrawal_1,"Total withdrawals, fresh, in Mgal/d",Total withdrawls,Withdrawls at an aggregate level,ground,fresh,gro_wat_1 + surf_wat_1
+total_withdrawal_2,"Total withdrawals, saline, in Mgal/d",Total withdrawls,Withdrawls at an aggregate level,ground,saline,gro_wat_2 + surf+wat+2
+total_withdrawal_3,"Total withdrawals, total (fresh+saline), in Mgal/d",Total withdrawls,Withdrawls at an aggregate level,ground and surface,fresh and saline,total_withdrawal_1 + total_withdrawal_2
