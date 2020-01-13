@@ -1,0 +1,155 @@
+---
+title: "Datathon"
+author: "#10 Error 404 Team Not Found"
+date: "2/22/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+## Research question: Which states are the most vulnerable to droughts?
+
+### Methodology
+
+#### We look at what are the states that severe droughts happen, then explore on what are the industries that earnings decrease is mostly related to droughts. Additionally we also look at the water quality on average in different states in order to come up with the conclusion of what are the states that are most vulnerable.
+
+#### The methodologies we use are random sampling and linear models to analyse the relationship between industry specific earnings and droughts.
+
+
+### Read the datasets
+```{r,cache = TRUE}
+chemicals <- read.csv("chemicals.csv")
+summary(chemicals)
+```
+
+```{r, cache= TRUE}
+droughts <- read.csv("droughts.csv")
+```
+
+
+#### First, we want to get a sense of what are the states that suffer from severe droughts.
+```{r}
+droughts$vul <- ifelse(droughts$d4>0, 4, ifelse(droughts$d3>0, 3, ifelse(droughts$d2>0, 2, ifelse(droughts$d1>0,1,0))))
+plot(droughts$state,droughts$vul)
+
+```
+
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+droughts %>% select(county, state, d4) %>% arrange(desc(d4)) %>% top_n(10)
+droughts %>% filter(d4 != 0) %>% select(county, state, d4) %>% ggplot() + geom_point(mapping=aes(x=county, y= d4)) + facet_wrap(~state) + ggtitle("How states are exposed to d4 drought")
+```
+
+
+#### The states AL, AR, CA, GA, KS, OK, NE, SD, NM and TX are mostly affected by the most severe droughts. In TX, NE and NM, severe droughts affect to the extent of almost 100% of their population. These counties are all in the midwestern US.
+
+#### One of the shortcomings of these facet wrap is that it takes d4 only as the indicator of severe droughts. Also, part of the reason for the density of points in TX is because it has more data points than the others. Despite these, however, this graph still shows us what are the states with more d4 happening than others.
+
+
+### What industries are mostly affected by droughts?
+
+#### Dummy model looks at how fish mining is affected.
+```{r}
+earnings <- read.csv("earnings.csv")
+#head(earnings)
+library(tidyverse)
+
+set.seed(123)
+sample_size <- floor(nrow(droughts) * 0.01)
+sample_id <- sample(1:nrow(droughts), sample_size)
+sample <- droughts[sample_id,]
+# A random sample of 1% of data is chosen from the droughts, such that the following models will run quicklier.
+
+prbl2 <- merge(earnings, sample, by="state")
+prbl2$agri <- prbl2$total_agri_fish_mine
+dummymodel <- lm(agri ~ none + d1 + d2 + d3 + d4, data = prbl2)
+summary(dummymodel)
+
+```
+
+#### Contrary to what we thought, fish mining workers love drought. So fish mining industry is not negatively affected even during periods of water resource shortage.
+
+### Model 1 looks at fish hunt.
+```{r}
+model1 <- lm(agri_fish_hunt ~ none + d1 + d2 + d3 + d4, data = prbl2)
+summary(model1)
+
+```
+#### While fish hunt is not significantly affected by the droughts.
+
+### Model 2 looks at construction.
+```{r}
+model2 <- lm(construction ~ none + d1 + d2 + d3 + d4, data = prbl2)
+summary(model2)
+```
+
+####Construction is severely impacted by the drought. As we know, construction generally consumes much water resources. That may be why when there is a drought these industries suffer.
+
+
+### Model 3 below looks at financial services industry.
+```{r}
+model3 <- lm(fin_ins_realest ~ none + d1 + d2 + d3 + d4, data = prbl2)
+summary(model3)
+```
+ 
+#### We can see that finance, insurance and real estate industries are greatly impacted by d1, d2 and d3 level of droughts. For example, if there is 1% more population affected by d2, there will be 3.97 decrease in earnings of financial industries. To the contrary, however, a most severe d4 drought has a positive impact on these industries. What's more, if there is no drought, financial services are not going to be significantly impacted.
+
+
+#### Since construction is clearly strongly affected by the drought, we want to see which states are primary focused on this industry.
+```{r, cache=TRUE}
+industry_occupation <- read.csv("industry_occupation.csv")
+
+construct_pop = industry_occupation %>% group_by(state) %>% summarize(num = sum(construction), perct=num/sum(total_employed)) %>% arrange(desc(perct)) %>% top_n(10)
+construct_pop
+
+#edu_pop = industry_occupation %>% group_by(state) %>% summarize(num = sum(edu_health), perct=num/sum(total_employed)) %>% arrange(desc(perct)) %>% top_n(10)
+```
+### We can see that the top three states where construction is their major industry are MT, LA and TX. From graph "How states are exposed to d4 drought", we can see that TX is subject to severe droughts. Considering the fact that the construction industry is negatively impacted by droughts from linear model 3, TX is very vulnerable to droughts. It's the same case with MT, AL and OK.
+
+
+### What about the financial industries?
+```{r}
+fin_pop = industry_occupation %>% group_by(state) %>% summarize(num = sum(finance_insurance_realestate), perct=num/sum(total_employed)) %>% arrange(desc(perct)) %>% top_n(10)
+fin_pop
+```
+
+#### The top three states that has finance as its mojor indutry are SD, DE and IA. Thus these states are not quite vulnerable to droughts.
+
+### Taking a look at the agriculture industry as a whole,
+```{r}
+agri_pop = industry_occupation %>% group_by(state) %>% summarize(num = sum(agriculture), perct=num/sum(total_employed)) %>% arrange(desc(perct)) %>% top_n(10)
+agri_pop
+```
+
+#### Fish hunt is severely impacted by drought. Fishing is a part of agriculture industry. So the states rely most on agriculture are also vulnerable to droughts. The top three are WY, AK and ND.
+
+### Water quality in different states
+```{r}
+meanLevels <- tapply(chemicals$value, chemicals$state, mean)
+barplot(meanLevels)
+title (main = "Mean Water Quality in 50 States", xlab= "Levels of Uranium in Microgram/Liter", ylab= "State Name")
+
+names((sort(meanLevels,decreasing=T))[1:5])
+```
+
+#### By observing the water quality in different states, determined by the mean value of chemicals in all waters in each state. The top five states with worst water quality are KS, CA, WA, PA and WI. Therefore, these states are the most vulnerable to drought, in the sense that if there is a water shortage, these states will most probably have less clean water to use than others.
+
+### Analytical and Modeling rigor
+
+####By concluding that certain states are more vulnerable to droughts based on their top industries we did have to make assumptions. We assumed low construction had a negative impact as well as low agriculture because those were the areas with the highest correlation to high drought levels. We also assumed that the mean reflected all counties in each state as an accurate representation of the uranium levels (in Micrograms/Liter) in the water.
+
+## Conclusion
+
+#### From the problem statement, we were most intrigued by the sample question of “What counties are most vulnerable in the event of a drought? Do droughts have an effect on industry specific earnings? Through our analysis we were able to discover the counties most susceptible to droughts which allowed to to develop an understanding of which states in the country were more prone to droughts. This was a great starting point that allowed us to expand our knowledge into greater researches. 
+
+####By finding the greatest industry in specific states, ones that had large industries more vulnerable to droughts, such as agriculture and construction, we were able to conclude which countries were more noticeably vulnerable. By comparing the median and mean chemical levels in the counties of each of the states, we were able to detect there are multiple varying causes for different levels of droughts in each of these states and that overall, TX, MT, LA and KS are noticeably vulnerable to droughts.
